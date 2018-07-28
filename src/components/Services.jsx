@@ -1,20 +1,10 @@
 import { h } from 'hyperapp'
+import ServiceCard from './ServiceCard.jsx'
 
-const parseToUrl = ({
-  protocol, host, port, path,
-}) =>
-  `${protocol}://${host}:${port}${path || ''}`
-
-export default ({ services }) =>
+export default ({ services, showService }) =>
   services && (
     <div>
       <h4>Services</h4>
-      <ul>
-        {services.map(service => (
-          <li>
-            {service.name} - {parseToUrl(service)}
-          </li>
-        ))}
-      </ul>
+      {services.map(service => <ServiceCard service={service} showService={showService}/>)}
     </div>
   )

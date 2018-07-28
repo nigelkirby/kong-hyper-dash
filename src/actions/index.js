@@ -27,4 +27,14 @@ export default {
       actions.set({ services: false })
     }
   },
+  showService: id => async (state, actions) => {
+    try {
+      const service = await kong.getService(id)
+      const { data: routes } = await kong.getServiceRoutes(id)
+      const { data: plugins } = await kong.getServicePlugins(id)
+      actions.set({ spotlightService: Object.assign(service, { routes, plugins }) })
+    } catch (err) {
+      actions.set({ spotlightService: false })
+    }
+  },
 }
