@@ -1,4 +1,7 @@
 import Header from './Header.jsx'
+import Services from './Services.jsx'
 
-export default {}
-export { Header }
+export {
+  Header,
+  Services,
+}

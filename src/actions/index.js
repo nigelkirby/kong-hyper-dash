@@ -8,6 +8,7 @@ export default {
   initKong: () => (state, actions) => {
     kong = new Kong(state.url)
     actions.loadInfo()
+    actions.loadServices()
   },
   loadInfo: () => async (state, actions) => {
     try {
@@ -15,6 +16,15 @@ export default {
       actions.set({ version, loadedUrl: state.url })
     } catch (err) {
       actions.set({ loadedUrl: false })
+    }
+  },
+  loadServices: () => async (state, actions) => {
+    try {
+      // TODO pagination
+      const { data: services } = await kong.getServices()
+      actions.set({ services })
+    } catch (err) {
+      actions.set({ services: false })
     }
   },
 }

@@ -1,5 +1,5 @@
 import { h } from 'hyperapp'
-import { Header } from './components'
+import { Header, Services } from './components'
 
 export default (state, actions) => (
   <div>
@@ -8,6 +8,9 @@ export default (state, actions) => (
       initKong={actions.initKong}
       loadedUrl={state.loadedUrl}
       version={state.version}
+    />
+    <Services
+      services={state.services}
     />
   </div>
 )
