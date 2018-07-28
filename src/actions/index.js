@@ -3,19 +3,18 @@ import Kong from '../services/KongService'
 let kong
 
 export default {
-  connected: () => () => ({ connected: true }),
+  set: obj => () => obj,
   setUrl: url => () => ({ url }),
-  setInfo: info => () => ({ info }),
-  initKong: () => ({ url }, actions) => {
-    kong = new Kong(url)
+  initKong: () => (state, actions) => {
+    kong = new Kong(state.url)
     actions.loadInfo()
   },
   loadInfo: () => async (state, actions) => {
     try {
-      const info = await kong.info()
-      actions.setInfo(info)
+      const { version } = await kong.info()
+      actions.set({ version, loadedUrl: state.url })
     } catch (err) {
-      actions.setInfo({})
+      actions.set({ loadedUrl: false })
     }
   },
 }
