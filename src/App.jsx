@@ -1,5 +1,5 @@
 import { h } from 'hyperapp'
-import { Header, Services, ServiceSpotlight } from './components'
+import { Header, ServiceStage } from './components'
 
 export default (state, actions) => (
   <div>
@@ -10,16 +10,7 @@ export default (state, actions) => (
       version={state.version}
     />
     <main>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <Services services={state.services} showService={actions.showService} />
-          </div>
-          <div class="col-lg-4">
-            <ServiceSpotlight service={state.spotlightService} />
-          </div>
-        </div>
-      </div>
+      <ServiceStage state={state} actions={actions}/>
     </main>
     <footer class="sticky">
       <p>Footer placeholder</p>
