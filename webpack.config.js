@@ -13,7 +13,7 @@ const plugins = [
   extractSass,
   new webpack.optimize.ModuleConcatenationPlugin(),
   new HtmlWebpackPlugin({
-    title: 'planning',
+    title: 'Kong Hyper Dash',
   }),
 ]
 
