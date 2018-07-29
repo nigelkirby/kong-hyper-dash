@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import { Header, ServiceStage } from './components'
+import WelcomeStage from './components/WelcomeStage.jsx'
 
 export default (state, actions) => (
   <div>
@@ -10,7 +11,14 @@ export default (state, actions) => (
       version={state.version}
     />
     <main>
-      <ServiceStage state={state} actions={actions}/>
+      {() => {
+        switch (state.stageView) {
+          case 'service':
+            return <ServiceStage state={state} actions={actions} />
+          default:
+            return <WelcomeStage state={state} actions={actions} />
+        }
+      }}
     </main>
     <footer class="sticky">
       <p>Footer placeholder</p>
