@@ -2,3 +2,11 @@
 .small-text {
   font-size: 70%
 }
+
+.card .section {
+  cursor: pointer
+}
+
+.card .section:hover {
+  background-color: #333333
+}

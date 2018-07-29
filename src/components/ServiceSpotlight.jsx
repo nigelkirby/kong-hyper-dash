@@ -1,4 +1,7 @@
 import { h } from 'hyperapp'
+import { formatTimestamp } from '../utils'
+import PluginCard from './PluginCard.jsx'
+import RouteCard from './RouteCard.jsx'
 
 const parseToUrl = ({
   protocol, host, port, path,
@@ -15,13 +18,23 @@ export default ({ service }) =>
         <br />
         URL: {makeLink(parseToUrl(service))}
         <br />
-        Created: {`${new Date(service.created_at * 1000)}`}
+        Created: {formatTimestamp(service.created_at)}
         <br />
-        Updated: {`${new Date(service.updated_at * 1000)}`}
+        Updated: {formatTimestamp(service.updated_at)}
       </p>
       <h3>Routes</h3>
-      <p>{service.routes.length > 0 ? <p /> : <span>No Routes</span>}</p>
+      <p>
+        {service.routes.length > 0 ? (
+          service.routes.map(route => <RouteCard {...route} />)
+        ) : (
+          <span>No Routes</span>
+        )}
+      </p>
       <h3>Plugins</h3>
-      <p>{service.plugins.length > 0 ? <p /> : <span>No Plugins</span>}</p>
+      {service.plugins.length > 0 ? (
+        service.plugins.map(plugin => <PluginCard {...plugin} />)
+      ) : (
+        <p>No Plugins</p>
+      )}
     </div>
   )

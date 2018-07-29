@@ -14,9 +14,10 @@ export default (state, actions) => (
         <div class="col-lg-4">
           <Services services={state.services} showService={actions.showService} />
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-4">
           <ServiceSpotlight service={state.spotlightService} />
         </div>
+        <div class="col-lg-4" ></div>
       </div>
     </div>
     <footer class="sticky">
