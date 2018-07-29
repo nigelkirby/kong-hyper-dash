@@ -9,17 +9,18 @@ export default (state, actions) => (
       loadedUrl={state.loadedUrl}
       version={state.version}
     />
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <Services services={state.services} showService={actions.showService} />
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <Services services={state.services} showService={actions.showService} />
+          </div>
+          <div class="col-lg-4">
+            <ServiceSpotlight service={state.spotlightService} />
+          </div>
         </div>
-        <div class="col-lg-4">
-          <ServiceSpotlight service={state.spotlightService} />
-        </div>
-        <div class="col-lg-4" ></div>
       </div>
-    </div>
+    </main>
     <footer class="sticky">
       <p>Footer placeholder</p>
     </footer>

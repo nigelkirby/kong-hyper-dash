@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "SPA for kong dashboard",
   "author": "Nigel Kirby <nigel.kirby@gmail.com>",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",

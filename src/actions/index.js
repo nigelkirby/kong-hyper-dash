@@ -14,6 +14,7 @@ export default {
     try {
       const { version } = await kong.info()
       actions.set({ version, loadedUrl: state.url })
+      localStorage.setItem('kongUrl', state.url)
     } catch (err) {
       actions.set({ loadedUrl: false })
     }
