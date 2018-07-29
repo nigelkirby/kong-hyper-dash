@@ -4,12 +4,7 @@ import WelcomeStage from './components/WelcomeStage.jsx'
 
 export default (state, actions) => (
   <div>
-    <Header
-      setUrl={actions.setUrl}
-      initKong={actions.initKong}
-      loadedUrl={state.loadedUrl}
-      version={state.version}
-    />
+    <Header nav={actions.nav} />
     <main>
       {() => {
         switch (state.stageView) {
