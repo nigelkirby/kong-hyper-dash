@@ -4,10 +4,7 @@ let kong
 
 export default {
   set: obj => () => obj,
-  setUrl: url => () => ({
-    url,
-  }),
-  initKong: () => (state, actions) => {
+  connect: () => (state, actions) => {
     kong = new Kong(state.url)
     actions.loadInfo()
     actions.loadServices()
@@ -21,10 +18,9 @@ export default {
         version,
         loadedUrl: state.url,
       })
-      localStorage.setItem('servers', JSON.stringify([{
+      actions.upsertServer({
         url: state.url,
-        autoload: true,
-      }]))
+      })
     } catch (err) {
       actions.set({
         loadedUrl: false,
@@ -65,6 +61,20 @@ export default {
       actions.set({
         spotlightService: false,
       })
+    }
+  },
+  upsertServer: ({
+    url,
+    autoload,
+  }) => (state) => {
+    const servers = Object.assign({
+      [url]: {
+        autoload,
+      },
+    }, state.servers)
+    localStorage.setItem('servers', JSON.stringify(servers))
+    return {
+      servers,
     }
   },
   nav: target => () => ({

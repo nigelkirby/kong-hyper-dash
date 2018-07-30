@@ -1,17 +1,11 @@
 import { h } from 'hyperapp'
 
-export default ({ setUrl, initKong }) => {
-  const keyup = e => setUrl(e.target.value)
-  const enterInit = e => e.keyCode === 13 && initKong()
+export default ({ set, connect }) => {
+  const keyup = e => (e.keyCode === 13 ? connect() : set({ url: e.target.value }))
   return (
     <div>
-      <input
-        type="text"
-        onkeyup={keyup}
-        onkeydown={enterInit}
-        placeholder="http://localhost:8001"
-      />
-      <button onclick={initKong}>Load</button>
+      <input type="text" onkeyup={keyup} placeholder="http://localhost:8001" />
+      <button onclick={connect}>Load</button>
     </div>
   )
 }

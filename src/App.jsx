@@ -16,7 +16,7 @@ export default (state, actions) => (
       }}
     </main>
     <footer class="sticky">
-      <p>Footer placeholder</p>
+      <pre>{JSON.stringify(state)}</pre>
     </footer>
   </div>
 )
