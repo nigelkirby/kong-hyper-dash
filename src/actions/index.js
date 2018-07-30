@@ -17,6 +17,7 @@ export default {
       actions.set({
         version,
         loadedUrl: state.url,
+        stageView: 'service',
       })
       actions.upsertServer({
         url: state.url,

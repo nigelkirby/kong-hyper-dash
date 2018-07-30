@@ -16,7 +16,7 @@ export default (state, actions) => (
       }}
     </main>
     <footer class="sticky">
-      <pre>{JSON.stringify(state)}</pre>
+      {state.loadedUrl && `Connected to Kong server v${state.version} at ${state.loadedUrl}`}
     </footer>
   </div>
 )
