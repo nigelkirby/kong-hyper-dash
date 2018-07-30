@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 import { Header, ServiceStage } from './components'
 import WelcomeStage from './components/WelcomeStage.jsx'
+import ConsumerStage from './components/ConsumerStage.jsx'
 
 export default (state, actions) => (
   <div>
@@ -8,8 +9,10 @@ export default (state, actions) => (
     <main>
       {() => {
         switch (state.stageView) {
-          case 'service':
+          case 'services':
             return <ServiceStage state={state} actions={actions} />
+          case 'consumers':
+            return <ConsumerStage state={state} actions={actions} />
           default:
             return <WelcomeStage state={state} actions={actions} />
         }

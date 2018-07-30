@@ -20,6 +20,9 @@ KongService.prototype = {
   async getServicePlugins(id) {
     return (await axios.get(`${this.baseUrl}/services/${id}/plugins`)).data
   },
+  async getConsumers() {
+    return (await axios.get(`${this.baseUrl}/consumers`)).data
+  },
 }
 
 export default KongService

@@ -8,6 +8,7 @@ export default {
     kong = new Kong(state.url)
     actions.loadInfo()
     actions.loadServices()
+    actions.loadConsumers()
   },
   loadInfo: () => async (state, actions) => {
     try {
@@ -17,7 +18,7 @@ export default {
       actions.set({
         version,
         loadedUrl: state.url,
-        stageView: 'service',
+        stageView: 'services',
       })
       actions.upsertServer({
         url: state.url,
@@ -40,6 +41,21 @@ export default {
     } catch (err) {
       actions.set({
         services: false,
+      })
+    }
+  },
+  loadConsumers: () => async (state, actions) => {
+    try {
+      // TODO pagination
+      const {
+        data: consumers,
+      } = await kong.getConsumers()
+      actions.set({
+        consumers,
+      })
+    } catch (err) {
+      actions.set({
+        consumers: false,
       })
     }
   },

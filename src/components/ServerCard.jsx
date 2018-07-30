@@ -8,7 +8,7 @@ export default ({
     onclick={() => {
       set({ url })
       connect()
-      nav('service')
+      nav('services')
     }}
   >
     <div class="section">{url}</div>
